@@ -1,0 +1,19 @@
+def calculate_reorder_point(lead_time_demand, safety_stock):
+    return lead_time_demand + safety_stock
+def calculate_inventory_turnover(cost_of_goods_sold, average_inventory):
+    return cost_of_goods_sold / average_inventory
+def calculate_safety_stock(daily_demand, lead_time, std_dev_demand, z_score):
+    return z_score * std_dev_demand * (lead_time ** 0.5)
+average_daily_demand = 50  
+lead_time_in_days = 10
+std_dev_demand = 10  
+z_score_service_level = 1.65 
+safety_stock = calculate_safety_stock(average_daily_demand, lead_time_in_days, std_dev_demand, z_score_service_level)
+print(f"Safety stock: {safety_stock:.2f} units")
+lead_time_demand = average_daily_demand * lead_time_in_days
+reorder_point = calculate_reorder_point(lead_time_demand, safety_stock)
+print(f"Reorder point: {reorder_point:.2f} units")
+cost_of_goods_sold = 100000 
+average_inventory = 20000  
+inventory_turnover = calculate_inventory_turnover(cost_of_goods_sold, average_inventory)
+print(f"Inventory turnover ratio: {inventory_turnover:.2f}")
